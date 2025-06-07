@@ -1,6 +1,8 @@
 package colourswap;
 
 import colourswap.model.Colour;
+import colourswap.model.Config;
+import colourswap.model.shapes.BlinkingShape;
 import colourswap.model.shapes.Player;
 import colourswap.model.shapes.Shape;
 import colourswap.utils.CollisionUtils;
@@ -18,7 +20,7 @@ public class TestBlinkingShape {
     @BeforeEach
     public void setUp() {
         // TODO Increment I Task One. Uncomment this line after implementing BlinkingShape class
-//        this.shape = new BlinkingShape(30, 30, Colour.RED, 50, 20);
+        this.shape = new BlinkingShape(30, 30, Colour.RED, 50, 20);
         this.painter = new MockPainter();
     }
 
@@ -87,7 +89,15 @@ public class TestBlinkingShape {
     @Test
     // TODO Increment I Task One. Complete this test
     public void testColourChanges() {
-        fail();
-    }
+        Colour initial = shape.getColour();
 
+        // Simulate enough game frames to trigger the blink
+        for (int i = 0; i < Config.SHAPE_BLINK_DELAY; i++) {
+            shape.move();  // move also triggers colour tick
+        }
+
+        Colour after = shape.getColour();
+
+        assertNotEquals(initial, after, "BlinkingShape should change colour after ");
+    }
 }

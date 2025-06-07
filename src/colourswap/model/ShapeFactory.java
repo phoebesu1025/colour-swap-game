@@ -15,12 +15,14 @@ public class ShapeFactory {
         Colour colour = Colour.random();
 
         // Randomly choose a shape type
-        // TODO Increment I. Add new shapes appropriately.
-        switch ((int) (Math.random() * 2)) {
+        // TODO Increment I. Add new shapes appropriately. (v)
+        switch ((int) (Math.random() * 3)) {
             case 0:
                 return new RectangleShape(x, y, colour, (Config.SHAPE_WIDTH), Config.SHAPE_HEIGHT);
             case 1:
                 return new CircleShape(x, y, colour, Config.SHAPE_RADIUS);
+            case 2:
+                return new BlinkingShape(x, y, colour, Config.SHAPE_WIDTH, Config.SHAPE_HEIGHT);
             default:
                 throw new RuntimeException("switch statement should not reach this line");
         }
