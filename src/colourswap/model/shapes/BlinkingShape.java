@@ -3,6 +3,7 @@ package colourswap.model.shapes;
 import colourswap.model.Colour;
 import colourswap.model.Config;
 
+// Extending from RectangleShape, but will change colour periodically
 public class BlinkingShape extends RectangleShape {
     private int ticks = 0;
 

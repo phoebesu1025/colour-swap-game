@@ -3,6 +3,7 @@ package colourswap;
 import colourswap.model.Colour;
 import colourswap.model.shapes.Player;
 import colourswap.model.shapes.Shape;
+import colourswap.model.shapes.TShape;
 import colourswap.utils.CollisionUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,7 @@ public class TestTShape {
     @BeforeEach
     public void setUp() {
         // TODO Increment I Task Two. Uncomment this line after implementing TShape class
-//        this.shape = new TShape(30, 30, Colour.RED, 60, 40);
+        this.shape = new TShape(30, 30, Colour.RED, 60, 40);
         this.painter = new MockPainter();
     }
 
@@ -99,9 +100,23 @@ public class TestTShape {
     }
 
     @Test
-    // TODO Increment I Task Two. Complete this test
     public void testNotTouchingPlayerInHollowCorner() {
-        fail();
+        this.shape = new TShape(0, 0, Colour.RED, 60, 40);
+        Player player = new Player(41, 21, Colour.RED, 10); // Bottom-right hollow of the TShape
+        assertFalse(CollisionUtils.isColliding(this.shape, player));
     }
 
+    @Test
+    public void testNotTouchingPlayerInBottomLeftHollowCorner() {
+        this.shape = new TShape(0, 0, Colour.RED, 60, 40);
+        Player player = new Player(-21, 21, Colour.RED, 10); // Bottom-right hollow of the TShape
+        assertFalse(CollisionUtils.isColliding(this.shape, player));
+    }
+
+    @Test
+    public void testTouchingPlayerInHollowCornerEdge() {
+        this.shape = new TShape(0, 0, Colour.RED, 60, 40);
+        Player player = new Player(40, 20, Colour.RED, 10); // Bottom-right hollow of the TShape
+        assertTrue(CollisionUtils.isColliding(this.shape, player));
+    }
 }
