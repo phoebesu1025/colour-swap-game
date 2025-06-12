@@ -7,16 +7,6 @@ import colourswap.utils.DistanceUtils;
 public class TShape extends Shape {
    private int blockSize;
 
-    /**
-     * Create a new Shape.
-     *
-     * @param x      the x-coordinate of the top-left corner
-     * @param y      the y-coordinate of the top-left corner
-     * @param colour the colour of the shape
-     * @param width  the width of the shape
-     * @param height the height of the shape
-     */
-
     public TShape(int x, int y, Colour colour, int width, int height) {
         super(x, y, colour, width, height);
         this.blockSize = width / 3;
@@ -25,7 +15,7 @@ public class TShape extends Shape {
 
     @Override
     protected void drawShape(Painter painter) {
-        painter.translate(this.x, this.y); // finding in testing...Need to move coordinate system
+        painter.translate(this.x, this.y);
 
         // Top row: 3 blocks side by side (x = 0, 1, 2)
         for (int i = 0; i < 3; i++) {
