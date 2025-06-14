@@ -65,18 +65,25 @@ public class GameController {
         switch (mode) {
             case SINGLE_PLAYER:
                 // Configure a new game with a single player controlled by the arrow keys
-                this.game = new Game(
-                        List.of(new Player(Config.GAME_WIDTH / 2 + 100, Config.GAME_HEIGHT / 2, Colour.RED, Config.PLAYER_RADIUS)));
-                inputListeners = List.of(
-                        new ArrowKeyMovementKeyListenerAdapter(game.getPlayer(1)),
-                        new ColourSwapKeyListenerAdapter(game));
+                this.game = new Game(List.of(new Player(Config.GAME_WIDTH / 2 + 100, Config.GAME_HEIGHT / 2, Colour.RED, Config.PLAYER_RADIUS)));
+                inputListeners = List.of(new ArrowKeyMovementKeyListenerAdapter(game.getPlayer(1)), new ColourSwapKeyListenerAdapter(game));
                 break;
 
             case PLAY_WITH_ROBOT:
                 // TODO Increment II Task One.
                 //  Configure a new game with a single human player controlled by the arrow keys, and a robot player.
-                this.game = null;
-                inputListeners = null;
+                // Human player at one side
+                Player human = new Player(Config.GAME_WIDTH / 2 + 100, Config.GAME_HEIGHT / 2, Colour.RED, Config.PLAYER_RADIUS);
+
+                // Robot player at the other side with opposite colour
+                Player robot = new Player(Config.GAME_WIDTH / 2 - 100, Config.GAME_HEIGHT / 2, Colour.BLUE, Config.PLAYER_RADIUS);
+
+                // Create a new game with both players
+                this.game = new Game(List.of(human, robot));
+                inputListeners = List.of(
+                        new ArrowKeyMovementKeyListenerAdapter(game.getPlayer(1)), // player 1 = human
+                        new ColourSwapKeyListenerAdapter(game)
+                );
                 break;
 
             default:
