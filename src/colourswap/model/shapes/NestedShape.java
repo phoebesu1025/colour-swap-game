@@ -73,4 +73,9 @@ public class NestedShape extends Shape {
         }
         return this.colour;
     }
+
+    @Override
+    protected String name() {
+        return "NestedShape";
+    }
 }

@@ -32,6 +32,11 @@ public class CircleShape extends Shape {
     }
 
     @Override
+    protected String name() {
+        return "CircleShape";
+    }
+
+    @Override
     public void drawShape(Painter painter) {
         painter.fillOval(this.colour, this.x, this.y, this.width, this.height);
     }

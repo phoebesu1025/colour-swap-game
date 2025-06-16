@@ -17,4 +17,9 @@ public class RectangleShape extends Shape {
         painter.fillRect(this.colour, this.x, this.y, this.width, this.height);
     }
 
+    @Override
+    protected String name() {
+        return "Rectangle";
+    }
+
 }

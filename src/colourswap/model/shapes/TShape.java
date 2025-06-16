@@ -47,4 +47,9 @@ public class TShape extends Shape {
         );
         return Math.min(minDist, bottomDist);
     }
+
+    @Override
+    protected String name() {
+        return "TShape";
+    }
 }

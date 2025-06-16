@@ -23,4 +23,10 @@ public class BlinkingShape extends RectangleShape {
             ticks = 0; // Reset tick counter
         }
     }
+
+    @Override
+    protected String name() {
+        return "BlinkingShape";
+    }
+
 }

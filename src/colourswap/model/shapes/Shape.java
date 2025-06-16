@@ -162,6 +162,12 @@ public abstract class Shape {
     }
 
     // TODO: Increment III Task One. Add a method that returns this shape's name.
+    /**
+     * Returns the name of this shape.
+     *
+     * @return the shape name
+     */
+    protected abstract String name();
 
     /**
      * Return this shape's score
