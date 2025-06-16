@@ -81,7 +81,7 @@ public class GameController {
 
 
                 // Create a new game with both players
-                this.game = new Game(List.of(robot));
+                this.game = new Game(List.of(human, robot));
                 inputListeners = List.of(
                         new ArrowKeyMovementKeyListenerAdapter(game.getPlayer(1)), // player 1 = human
                         new ColourSwapKeyListenerAdapter(game)

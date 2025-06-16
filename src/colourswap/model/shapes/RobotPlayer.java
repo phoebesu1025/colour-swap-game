@@ -17,6 +17,7 @@ import java.util.List;
  * <p>
  * The robot does not decide when to change colour. This responsibility remains with the human player.
  */
+// TODO Increment II Task Two and Three.
 public class RobotPlayer extends Player {
 
     public RobotPlayer(int x, int y, Colour colour, int radius) {
@@ -30,6 +31,7 @@ public class RobotPlayer extends Player {
      * @param shapes The shapes in the game.
      */
     public void decideMovement(List<Shape> shapes) {
+        // TODO Increment II Task Two and Three. Complete this method
         // Stop all movement first
         stopMovingUp();
         stopMovingDown();
@@ -82,9 +84,15 @@ public class RobotPlayer extends Player {
     }
 
     private void moveTowardCenterIfFar() {
-        double distanceFromCenter = this.getDistanceToPoint(Config.GAME_WIDTH/2, Config.GAME_HEIGHT/2);
+        int targetX = Config.GAME_WIDTH / 2;
+        int targetY = Config.GAME_HEIGHT / 2;
+
+        double distanceFromCenter = this.getDistanceToPoint(targetX, targetY);
 
         if (distanceFromCenter >= Config.ROBOT_RETURN_DISTANCE) {
+            int dx = targetX - this.centeredX();
+            int dy = targetY - this.centeredY();
+
             if (dx > 0 && this.getX() + this.getWidth() < Config.GAME_WIDTH) {
                 startMovingRight();
             } else if (dx < 0 && this.getX() > 0) {
