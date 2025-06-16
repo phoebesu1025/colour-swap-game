@@ -6,6 +6,7 @@ import colourswap.model.Colour;
 import colourswap.model.Config;
 import colourswap.model.Game;
 import colourswap.model.shapes.Player;
+import colourswap.model.shapes.RobotPlayer;
 import colourswap.view.GameView;
 
 import javax.swing.*;
@@ -76,10 +77,11 @@ public class GameController {
                 Player human = new Player(Config.GAME_WIDTH / 2 + 100, Config.GAME_HEIGHT / 2, Colour.RED, Config.PLAYER_RADIUS);
 
                 // Robot player at the other side with opposite colour
-                Player robot = new Player(Config.GAME_WIDTH / 2 - 100, Config.GAME_HEIGHT / 2, Colour.BLUE, Config.PLAYER_RADIUS);
+                Player robot = new RobotPlayer(Config.GAME_WIDTH / 2 - 100, Config.GAME_HEIGHT / 2, Colour.BLUE, Config.PLAYER_RADIUS);
+
 
                 // Create a new game with both players
-                this.game = new Game(List.of(human, robot));
+                this.game = new Game(List.of(robot));
                 inputListeners = List.of(
                         new ArrowKeyMovementKeyListenerAdapter(game.getPlayer(1)), // player 1 = human
                         new ColourSwapKeyListenerAdapter(game)
