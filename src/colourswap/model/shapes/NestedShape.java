@@ -10,6 +10,7 @@ import java.util.List;
 public class NestedShape extends Shape {
     private int margin = Config.NESTED_SHAPE_MARGIN_SIZE;
     private List<Shape> children = new ArrayList<>();
+    private boolean isNestedChild = false;
 
     public NestedShape(int x, int y, Colour colour, int width, int height) {
         super(x, y, colour, width, height);
@@ -47,7 +48,14 @@ public class NestedShape extends Shape {
         painter.translate(this.x - margin,this.y - margin);
 
         for (Shape child : children) {
+            child.setSuppressScore(true);  // Suppress score before drawing
+
+            if (child instanceof NestedShape) {
+                ((NestedShape) child).markAsNestedChild(); // Tell it's inside another
+            }
+
             child.draw(painter);
+            child.setSuppressScore(false); // Reset after drawing
         }
         painter.translate(-(this.x - margin), -(this.y - margin));
     }
@@ -77,5 +85,23 @@ public class NestedShape extends Shape {
     @Override
     protected String name() {
         return "NestedShape";
+    }
+
+    @Override
+    public int getScore() {
+        int total = 1;
+        for (Shape child : children) {
+            total += child.getScore();
+        }
+        return total;
+    }
+
+    @Override
+    public boolean shouldDisplayScore() {
+        return !isNestedChild;
+    }
+
+    public void markAsNestedChild() {
+        this.isNestedChild = true;
     }
 }

@@ -20,6 +20,7 @@ public abstract class Shape {
     protected int dy;
     protected int borderWidth;
     protected int borderHeight;
+    private boolean suppressScore = false;
 
     /**
      * Create a new Shape.
@@ -122,6 +123,12 @@ public abstract class Shape {
     public void draw(Painter painter) {
         painter.setColour(this.colour);
         this.drawShape(painter);
+
+        if (shouldDisplayScore()) {
+            int centerX = this.getX() + this.getWidth() / 2;
+            int centerY = this.getY() + this.getHeight() / 2;
+            painter.drawString(String.valueOf(this.getScore()), centerX, centerY);
+        }
     }
 
     protected abstract void drawShape(Painter painter);
@@ -175,5 +182,18 @@ public abstract class Shape {
     public int getScore() {
         return 1;
     }
+
+    public void setSuppressScore(boolean suppress) {
+        this.suppressScore = suppress;
+    }
+
+    /**
+     * Return true if the score is not suppress - for NestedShape
+     */
+    public boolean shouldDisplayScore() {
+        return !suppressScore;
+    }
+
+
 
 }

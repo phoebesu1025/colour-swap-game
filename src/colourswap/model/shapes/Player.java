@@ -72,4 +72,8 @@ public class Player extends CircleShape {
         }
     }
 
+    @Override
+    public boolean shouldDisplayScore() {
+        return false; // Players don’t display score
+    }
 }

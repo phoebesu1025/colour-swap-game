@@ -6,6 +6,7 @@ import colourswap.model.Config;
 // Extending from RectangleShape, but will change colour periodically
 public class BlinkingShape extends RectangleShape {
     private int ticks = 0;
+    private int score = 1;
 
     public BlinkingShape(int x, int y, Colour colour, int width, int height) {
         super(x, y, colour, width, height);
@@ -20,6 +21,7 @@ public class BlinkingShape extends RectangleShape {
         if (ticks >= Config.SHAPE_BLINK_DELAY) {
             // Checks if the shape has moved enough times (ticks) to flip colour.
             this.setColour(this.getColour().opposite()); // Blink
+            score++;
             ticks = 0; // Reset tick counter
         }
     }
@@ -29,4 +31,8 @@ public class BlinkingShape extends RectangleShape {
         return "BlinkingShape";
     }
 
+    @Override
+    public int getScore() {
+        return score;
+    }
 }

@@ -40,5 +40,4 @@ public class CircleShape extends Shape {
     public void drawShape(Painter painter) {
         painter.fillOval(this.colour, this.x, this.y, this.width, this.height);
     }
-
 }

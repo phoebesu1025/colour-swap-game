@@ -52,4 +52,9 @@ public class TShape extends Shape {
     protected String name() {
         return "TShape";
     }
+
+    @Override
+    public int getScore() {
+        return 2;
+    }
 }

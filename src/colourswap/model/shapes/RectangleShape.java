@@ -19,7 +19,6 @@ public class RectangleShape extends Shape {
 
     @Override
     protected String name() {
-        return "Rectangle";
+        return "RectangleShape";
     }
-
 }

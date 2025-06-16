@@ -62,5 +62,4 @@ public class ShapeFactory {
                 throw new RuntimeException("Unexpected shape type");
         }
     }
-
 }
