@@ -25,8 +25,8 @@ public class Game {
     private int timeUntilNextObstacle = 0;
     private boolean over;
 
-    // TODO Increment III Task Three Initialise the list
-    private List<GameUpdateListener> listeners;
+    // TODO Increment III Task Three Initialise the list (v)
+    private List<GameUpdateListener> listeners = new ArrayList<>();
 
     public Game(List<Player> players) {
         this.players.addAll(players);
@@ -98,7 +98,10 @@ public class Game {
             this.over = true;
         }
 
-        // TODO Increment III Task Three. Notify GameUpdateListeners
+        // TODO Increment III Task Three. Notify GameUpdateListeners (v)
+        for (GameUpdateListener listener : listeners) {
+            listener.gameStateUpdated();
+        }
 
     }
 
@@ -156,6 +159,7 @@ public class Game {
      *          <p>
      */
     public void addGameListener(GameUpdateListener l) {
-        // TODO Increment III Task Three. Complete this method to add GameUpdateListener
+        // TODO Increment III Task Three. Complete this method to add GameUpdateListener (v)
+        this.listeners.add(l);
     }
 }

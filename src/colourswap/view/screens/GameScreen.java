@@ -4,6 +4,7 @@ import colourswap.model.Config;
 import colourswap.model.Game;
 import colourswap.view.MainWindow;
 import colourswap.view.ShapePanel;
+import colourswap.view.TableAdapter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,9 +38,9 @@ public class GameScreen extends JPanel {
 
         // This displays the table
         // TODO Increment III Task Three. Uncomment the following three lines to display the table
-//        this.table = new JTable();
-//        JScrollPane tableScrollPane = new JScrollPane(table);
-//        infoPanel.add(tableScrollPane, BorderLayout.CENTER);
+        this.table = new JTable();
+        JScrollPane tableScrollPane = new JScrollPane(table);
+        infoPanel.add(tableScrollPane, BorderLayout.CENTER);
     }
 
     /**
@@ -51,8 +52,9 @@ public class GameScreen extends JPanel {
         this.game = game;
         this.shapePanel.setGame(game);
 
-        // TODO Increment III Task Three. Link the JTable with Game and TableAdapter
-
+        // TODO Increment III Task Three. Link the JTable with Game and TableAdapter (v)
+        TableAdapter adapter = new TableAdapter(game);
+        this.table.setModel(adapter);
     }
 
     /**
