@@ -19,7 +19,7 @@ public class TestBlinkingShape {
 
     @BeforeEach
     public void setUp() {
-        // TODO Increment I Task One. Uncomment this line after implementing BlinkingShape class
+        // TODO Increment I Task One. Uncomment this line after implementing BlinkingShape class (v)
         this.shape = new BlinkingShape(30, 30, Colour.RED, 50, 20);
         this.painter = new MockPainter();
     }
@@ -87,8 +87,9 @@ public class TestBlinkingShape {
     }
 
     @Test
-    // TODO Increment I Task One. Complete this test
+    // TODO Increment I Task One. Complete this test (v)
     public void testColourChanges() {
+        // Getting initial colour of the BlinkingShape
         Colour initial = shape.getColour();
 
         // Simulate enough game frames to trigger the blink
@@ -98,6 +99,7 @@ public class TestBlinkingShape {
 
         Colour after = shape.getColour();
 
+        // Pass the test if initial and after are not equal
         assertNotEquals(initial, after, "BlinkingShape should change colour after ");
     }
 }

@@ -17,13 +17,12 @@ import java.util.List;
  * <p>
  * The robot does not decide when to change colour. This responsibility remains with the human player.
  */
-// TODO Increment II Task Two and Three.
+// TODO Increment II Task Two and Three. (v)
 public class RobotPlayer extends Player {
 
     public RobotPlayer(int x, int y, Colour colour, int radius) {
         super(x, y, colour, radius);
     }
-
     /**
      * Decide which direction the player should move in.
      * Move away from the nearest opposite-coloured shape. If there are none nearby, move towards the middle instead.
@@ -31,7 +30,7 @@ public class RobotPlayer extends Player {
      * @param shapes The shapes in the game.
      */
     public void decideMovement(List<Shape> shapes) {
-        // TODO Increment II Task Two and Three. Complete this method
+        // TODO Increment II Task Two and Three. Complete this method (v)
         // Stop all movement first
         stopMovingUp();
         stopMovingDown();
@@ -53,17 +52,19 @@ public class RobotPlayer extends Player {
         boolean atBottomEdge = this.getY() + this.getHeight() >= Config.GAME_HEIGHT;
 
         int shapeX = shape.getX();
+        int shapeEndX = shape.getX() + this.getWidth();
         int shapeY = shape.getY();
+        int shapeEndY = shape.getY() + this.getHeight();
         int robotX = this.getX();
+        int robotEndX = this.getX() + this.getWidth();
         int robotY = this.getY();
+        int robotEndY = this.getY() + this.getHeight();
 
-        // Special edge fallback: if stuck against left or right edge, move vertically away
-        if (atLeftEdge || atRightEdge) {
-            if (shapeY < robotY && !atBottomEdge) {
-                startMovingDown();
-            } else if (shapeY > robotY && !atTopEdge) {
-                startMovingUp();
-            }
+        if (handleCornerCases(atLeftEdge, atRightEdge, atTopEdge, atBottomEdge, shapeX, shapeY, shapeEndX, shapeEndY, robotX, robotY, robotEndX, robotEndY)) {
+            return;
+        }
+
+        if (handleEdgeCases(atLeftEdge, atRightEdge, atTopEdge, atBottomEdge, shapeX, shapeY, robotX, robotY)) {
             return;
         }
 
@@ -81,6 +82,42 @@ public class RobotPlayer extends Player {
             if (!atRightEdge) startMovingRight();
             if (!atBottomEdge) startMovingDown();
         }
+    }
+
+    private boolean handleCornerCases(boolean atLeftEdge, boolean atRightEdge, boolean atTopEdge, boolean atBottomEdge, int shapeX, int shapeY, int shapeEndX, int shapeEndY, int robotX, int robotY, int robotEndX, int robotEndY) {
+        if (atLeftEdge && atTopEdge) {
+            if (shapeX < robotEndX) startMovingRight();
+            if (shapeY < robotEndY) startMovingDown();
+            return true;
+        } else if (atRightEdge && atTopEdge) {
+            if (shapeEndX > robotX) startMovingLeft();
+            if (shapeY < robotEndY) startMovingDown();
+            return true;
+        } else if (atLeftEdge && atBottomEdge) {
+            if (shapeX < robotEndX) startMovingRight();
+            if (shapeEndY > robotY) startMovingUp();
+            return true;
+        } else if (atRightEdge && atBottomEdge) {
+            if (shapeEndX > robotX) startMovingLeft();
+            if (shapeEndY > robotY) startMovingUp();
+            return true;
+        }
+        return false;
+    }
+
+    private boolean handleEdgeCases(boolean atLeftEdge, boolean atRightEdge, boolean atTopEdge, boolean atBottomEdge, int shapeX, int shapeY, int robotX, int robotY) {
+        if (atLeftEdge || atRightEdge) {
+            if (shapeY < robotY && !atBottomEdge) startMovingDown();
+            else if (shapeY > robotY && !atTopEdge) startMovingUp();
+            return true;
+        }
+
+        if (atTopEdge || atBottomEdge) {
+            if (shapeX < robotX && !atRightEdge) startMovingRight();
+            else if (shapeX > robotX && !atLeftEdge) startMovingLeft();
+            return true;
+        }
+        return false;
     }
 
     private void moveTowardCenterIfFar() {

@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestNestedShape {
-    // TODO Increment I Task Three. Uncomment the following after implementing NestedShape class
+    // TODO Increment I Task Three. Uncomment the following after implementing NestedShape class (v)
 
     private NestedShape shape;
     private MockPainter painter;
@@ -107,5 +107,4 @@ public class TestNestedShape {
         innerShape.setY(50);
         assertTrue(CollisionUtils.isColliding(this.shape, player));
     }
-
 }

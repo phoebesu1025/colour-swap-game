@@ -137,7 +137,6 @@ public abstract class Shape {
      * Update the shape's xy-coordinates based on its current direction.
      */
     public void move() {
-
         // Change direction if shape is touching edge
         if (this.x <= 0) {
             this.dx = Math.abs(this.dx);
@@ -153,7 +152,6 @@ public abstract class Shape {
         // Update coordinates using direction
         this.x += this.dx;
         this.y += this.dy;
-
     }
 
     /**
@@ -168,7 +166,7 @@ public abstract class Shape {
         return DistanceUtils.rectangleDistanceToPoint(this.x, this.y, this.width, this.height, pX, pY);
     }
 
-    // TODO: Increment III Task One. Add a method that returns this shape's name.
+    // TODO: Increment III Task One. Add a method that returns this shape's name. (v)
     /**
      * Returns the name of this shape.
      *
@@ -193,7 +191,4 @@ public abstract class Shape {
     public boolean shouldDisplayScore() {
         return !suppressScore;
     }
-
-
-
 }

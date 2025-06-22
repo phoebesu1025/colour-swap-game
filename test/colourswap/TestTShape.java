@@ -18,7 +18,7 @@ public class TestTShape {
 
     @BeforeEach
     public void setUp() {
-        // TODO Increment I Task Two. Uncomment this line after implementing TShape class
+        // TODO Increment I Task Two. Uncomment this line after implementing TShape class (v)
         this.shape = new TShape(30, 30, Colour.RED, 60, 40);
         this.painter = new MockPainter();
     }

@@ -37,7 +37,7 @@ public class GameScreen extends JPanel {
         infoPanel.add(this.scoreLabel, BorderLayout.NORTH);
 
         // This displays the table
-        // TODO Increment III Task Three. Uncomment the following three lines to display the table
+        // TODO Increment III Task Three. Uncomment the following three lines to display the table (v)
         this.table = new JTable();
         JScrollPane tableScrollPane = new JScrollPane(table);
         infoPanel.add(tableScrollPane, BorderLayout.CENTER);

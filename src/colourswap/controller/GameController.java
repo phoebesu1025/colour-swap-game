@@ -71,7 +71,7 @@ public class GameController {
                 break;
 
             case PLAY_WITH_ROBOT:
-                // TODO Increment II Task One.
+                // TODO Increment II Task One.(v)
                 // Configure a new game with a single human player controlled by the arrow keys, and a robot player.
                 // Human player at one side
                 Player human = new Player(Config.GAME_WIDTH / 2 + 100, Config.GAME_HEIGHT / 2, Colour.RED, Config.PLAYER_RADIUS);

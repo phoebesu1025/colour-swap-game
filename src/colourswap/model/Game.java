@@ -102,7 +102,6 @@ public class Game {
         for (GameUpdateListener listener : listeners) {
             listener.gameStateUpdated();
         }
-
     }
 
     /**
@@ -117,10 +116,15 @@ public class Game {
             for (Player player : this.players) {
                 if (CollisionUtils.isColliding(shape, player) && shape.getColour() == player.getColour()) {
                     touchingPlayer = true;
+
+                    // only calculate for Player to get the score
+                    if (!(player instanceof RobotPlayer)) {
+                        this.score += shape.getScore();
+                    }
+                    break;
                 }
             }
             if (touchingPlayer) {
-                this.score += shape.getScore();
                 shapeIterator.remove();
             }
         }
