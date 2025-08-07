@@ -61,7 +61,8 @@ This game was originally developed as a university project and later refactored 
 ## Download & Run
 
 Download the latest version:
-👉 [final-project-colour-swap.jar](./out/artifacts/final_project_colour_swap_jar/final-project-colour-swap.jar)
+👉 👉 [Download Colour Swap JAR](./release/final-project-colour-swap.jar)
+
 
 To run:
 ```bash
