@@ -1,29 +1,68 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/UupTtBp0)
-# Final Project: Colour Swap
+# 🎨 Colour Swap – Java Game Project
 
-## Introduction
+## Project Overview
+**Colour Swap** is a 2D Java game built using Java Swing.  
+Players control a coloured circle that can move around the screen and switch between **red** and **blue**. The goal is to **collect same-coloured shapes** to earn points and **avoid opposite-coloured shapes** or the game ends!
 
-In this project, you will extend the game Colour Swap. In this game, shapes will appear periodically and move around on the screen. The player controls a circle that is either red or blue. The player can move the circle using arrow keys, and change its colour using the space bar.
+- Move with the arrow keys  
+- Press the space bar to switch colours  
+- Gain points by touching same-coloured shapes  
+- Game over if you touch an opposite-coloured shape!
 
-When the player touches a same-coloured shape, that shape is removed and the player scores points. The objective of the game is to avoid touching any opposite-coloured shapes. Once the player does, the game is over and the player will be shown their score.
+| **Single Player Mode** | **Robot Player Mode** |
+|------------------------|------------------------|
+| <img src="https://github.com/user-attachments/assets/ed6c699e-2e0e-4a86-9c4b-c5603fab97dd" width="100%"/> | <img src="https://github.com/user-attachments/assets/b682355a-0fb8-4aaa-8833-99c4f2db7e85" width="100%"/> |
 
-## Project instructions
 
-This project is divided into three increments. For instructions on what to do for each increment, and how they will be assessed, please see the associated project handout which will be provided to you along with this codebase.
+## Project Structure
 
-## Package description
+The codebase is modular and organized into packages:
 
-The code, as provided to you, is organized into _packages_. A brief description of each package is given here:
+- `colourswap` – Main entry point (`Main.java`) and core drawing logic  
+- `controller` – Handles game setup and connects the model to the view  
+- `keylisteners` – Reads and processes key input from the player  
+- `model` – Contains the `Game` class and main game logic  
+- `shapes` – Shape-related classes in an inheritance hierarchy  
+- `utils` – Utility classes for distance calculation and collision detection  
+- `view` – Java Swing UI components (e.g. `MainWindow`)  
+- `screens` – UI screens (e.g. title screen, game screen, help screen, game over)
 
-- `colourswap`: The main package. Contains the `Main` class to run the application, along with classes involved with drawing shapes.
 
-  - `controller`: Contains classes involved with starting a new game, and connecting `Game` objects with _views_ to display them (see below).
-    - `keylisteners`: Contains classes involved with reading key presses to control the game (e.g. move players, swap colours).
 
-  - `model`: Contains the main `Game` class and other classes involved with running the game.
-    - `shapes`: Contains all the shapes in the game, organized in a _hierarchy_ with `Shape` being the top-level class.
+## Development Notes
 
-  - `utils`: Contains classes with methods used for calculating distances between objects, and for determining whether two objects are colliding with one another. Used by the game to decide when to earn points - and when the player loses!
+This game was originally developed as a university project and later refactored for my portfolio. It demonstrates:
 
-  - `view`: Contains the Java Swing UI for the game. The `MainWindow` class is the main screen - all other components are contained within.
-    - `screens`: Contains different game screens, such as the title screen, the main game screen, the help screen, and the "game over" screen.
+- Object-oriented design
+- Inheritance and polymorphism
+- Real-time game logic
+- Java Swing UI
+- Event handling with key listeners
+- Collision detection
+- Modular code architecture
+
+
+
+## How to Run
+
+1. Clone the repository  
+2. Open the project in your Java IDE  
+3. Run the `Main.java` class from the `colourswap` package
+
+
+
+## Future Improvements
+
+- Add difficulty scaling over time  
+- Add audio and sound effects  
+- Add high score tracking  
+- Create mobile version (JavaFX / libGDX exploration)
+
+## Download & Run
+
+Download the latest version:
+👉 [final-project-colour-swap.jar](./out/artifacts/final_project_colour_swap_jar/final-project-colour-swap.jar)
+
+To run:
+```bash
+java -jar final-project-colour-swap.jar
