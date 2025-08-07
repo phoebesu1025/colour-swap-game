@@ -42,21 +42,12 @@ This game was originally developed as a university project and later refactored 
 - Modular code architecture
 
 
-
 ## How to Run
 
 1. Clone the repository  
 2. Open the project in your Java IDE  
 3. Run the `Main.java` class from the `colourswap` package
 
-
-
-## Future Improvements
-
-- Add difficulty scaling over time  
-- Add audio and sound effects  
-- Add high score tracking  
-- Create mobile version (JavaFX / libGDX exploration)
 
 ## Download & Run
 
